@@ -14,7 +14,11 @@
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/peerjs.min.js"></script>
     <script>
-        
+        // Create My Peer ID
+        let peer = new Peer();
+        peer.on('open', function(PeerID){
+            console.log(PeerID)
+        })
     </script>
 </body>
 </html>
