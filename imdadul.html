@@ -45,10 +45,32 @@
             
             let conn = peer.connect(PartnerPeerID);
             conn.on('open', function(){
-                $('#connectionStatus').html("Connection Status: YES")
+                $('#connectionStatus').html("Connection Status: YES");
+                ReceiveMessage();   //Execute the method
             })
 
         })
+
+        // Send Message from Imdadul Haque
+        $('#sendBtn').on('click', function(){
+            let msg = $('#msg').val();
+            let PartnerPeerID = $('#PartnerPeerID').val();
+            
+            let conn = peer.connect(PartnerPeerID);
+            conn.on('open', function(){
+                conn.send(msg)
+            })
+        })
+
+
+        // message Receive from Imdadul Haque
+        function ReceiveMessage(){
+            peer.on('connection', function(conn){
+                conn.on('data', function(msg){
+                    $('#receivedMsg').html(msg)
+                })
+            })
+        }
     </script>
 </body>
 </html>
