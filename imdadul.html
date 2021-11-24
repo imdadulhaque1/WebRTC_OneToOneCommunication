@@ -10,13 +10,12 @@
 <body>
 
     <div class="container">
-
         <hr><p id="selfPeerID">Self Peer ID(Imdadul Haque):</p><hr> <br>
         <p class="text-primary" id="connectionStatus">Connection Status: </p>
         <div class="row">
             <div class="col-md-8">
-                <input type="text" placeholder="Partner Peer ID " class="form-control"> <br>
-                <button class="btn btn-primary" >Connect</button>
+                <input id="PartnerPeerID" type="text" placeholder="Partner Peer ID " class="form-control"> <br>
+                <button id="connectBtn" class="btn btn-primary" >Connect</button>
             </div>
         </div>
     </div>
@@ -30,6 +29,15 @@
         peer.on('open', function(PeerID){
             // console.log(PeerID)
             $('#selfPeerID').html("Self Peer ID(Imdadul Haque): "+PeerID)
+        })
+        $('#connectBtn').on('click', function(){
+            let PartnerPeerID = $('#PartnerPeerID').val();
+            
+            let conn = peer.connect(PartnerPeerID);
+            conn.on('open', function(){
+                $('#connectionStatus').html("Connection Status: YES")
+            })
+
         })
     </script>
 </body>
