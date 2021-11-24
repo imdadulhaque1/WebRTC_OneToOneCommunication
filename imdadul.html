@@ -8,7 +8,18 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" >
 </head>
 <body>
-    
+
+    <div class="container">
+
+        <hr><p id="selfPeerID">Self Peer ID(Imdadul Haque):</p><hr> <br>
+        <p class="text-primary" id="connectionStatus">Connection Status: </p>
+        <div class="row">
+            <div class="col-md-8">
+                <input type="text" placeholder="Partner Peer ID " class="form-control"> <br>
+                <button class="btn btn-primary" >Connect</button>
+            </div>
+        </div>
+    </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/jquery-3.6.0.min.js"></script>
@@ -17,7 +28,8 @@
         // Create My Peer ID
         let peer = new Peer();
         peer.on('open', function(PeerID){
-            console.log(PeerID)
+            // console.log(PeerID)
+            $('#selfPeerID').html("Self Peer ID(Imdadul Haque): "+PeerID)
         })
     </script>
 </body>
